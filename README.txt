@@ -2,7 +2,6 @@
 ## Author: Six Apart
 ## Version: 1.1
 ## Released under GPL2
-##
 
 ## OVERVIEW ##
 
