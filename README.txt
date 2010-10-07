@@ -1,5 +1,5 @@
-## PostOffice, a plugin for Movable Type
-## Author: Six Apart, http://www.sixapart.com/
+## Post Office, a plugin for Movable Type
+## Author: Six Apart
 ## Version: 1.1
 ## Released under GPL2
 ##
@@ -28,7 +28,7 @@ the blog they want to post to when sending an email.
 ## INSTALLATION ##
 
   1. Copy the contents of PostOffice/plugins into /path/to/mt/plugins/
-  2. Navigate to the settings area for PostOffice and enter in the
+  2. Navigate to the settings area for Post Office and enter in the
      connection info for your email provider.
   3. Ensure that you have an API Password selected for yourself. Edit
      your profile if you need to select one.
@@ -40,7 +40,7 @@ the blog they want to post to when sending an email.
 ## SOURCE CODE ##
 
 Source repository:
-    http://github.com/sixapart/mt-plugin-PostOffice
+    http://github.com/movabletype/mt-plugin-post-office
 
 ## LICENSE ##
 

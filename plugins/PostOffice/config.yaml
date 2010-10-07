@@ -1,7 +1,7 @@
-name: PostOffice
+name: Post Office
 id: postoffice
 key: postoffice
-author_link: http://www.sixapart.com/
+author_link: http://www.movabletype.org/
 author_name: Six Apart Ltd.
 description: Reads from e-mail and posts to MT.
 version: 1.1

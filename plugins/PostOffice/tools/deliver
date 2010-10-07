@@ -18,7 +18,7 @@ use MT::Bootstrap;
 use MT;
 my $mt = MT->new;
 
-print "Movable Type PostOffice Delivery starting...\n";
+print "Movable Type Post Office Delivery starting...\n";
 
 require PostOffice;
 $PostOffice::DEBUG = 1;
