@@ -188,7 +188,7 @@ sub config_template {
     id="require_api_key"
     label="<__trans phrase="Require Web Services Password in Address">"
     show_hint="1"
-    hint="<__trans phrase="If you check this box, Post Office will require users to include their Web Serivce Password as an extension on their e-mail address. So the 'From' address should contain a '+' followed by their Web Services Password value. This provides additional authentication for incoming messages. (i.e., user+nnnnn@...)">">
+    hint="<__trans phrase="If you check this box, Post Office will require users to include their Web Service Password as an extension on their e-mail address. So the 'From' address should contain a '+' followed by their Web Services Password value. This provides additional authentication for incoming messages. (i.e., user+nnnnn@...)">">
     <input type="checkbox" name="require_api_key" <mt:if name="require_api_key">checked="checked"</mt:if> id="require_api_key"  class="cb" />
 </mtapp:setting>
 
