@@ -15,7 +15,7 @@ package PostOffice;
 use strict;
 use MT::Util qw(html_text_transform perl_sha1_digest_hex);
 
-our $DEBUG = 0;
+our $DEBUG = 1;
 
 sub plugin {
     return MT->component('postoffice');
