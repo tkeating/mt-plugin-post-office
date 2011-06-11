@@ -231,7 +231,13 @@ sub process_message_parts {
                 # this is a file embedded for reference in the html; don't
                 # output it in the body of the post.
                 next if $file->{content_id};
-                $text .= $pkg->format_embedded_asset($file);
+
+                # Has the plugin has been configured to embed a link to the 
+                # asset in the Entry Body? The Objectasset relationship is
+                # created independent of this.
+                if ($cfg->{embed_attachments}) {
+                    $text .= $pkg->format_embedded_asset($file);
+                }
             }
         }
     }

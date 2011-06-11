@@ -177,6 +177,14 @@ sub config_template {
 </mtapp:setting>
 
 <mtapp:setting
+    id="embed_attachments"
+    label="<__trans phrase="Embed Attachments">"
+    show_hint="1"
+    hint="<__trans phrase="Embed attachments in the Entry Body? (An entry-asset relationship will be created for any attachments regardless of this setting.)">">
+    <input type="checkbox" name="embed_attachments" <mt:if name="embed_attachments">checked="checked"</mt:if> id="embed_attachments" class="cb" value="1" />
+</mtapp:setting>
+
+<mtapp:setting
     id="allow_mt_authors"
     label="<__trans phrase="Allow all MT Authors from this Blog to Post">"
     show_hint="1"

@@ -42,6 +42,8 @@ settings:
         Default: 0
     post_status:
         Default: 2
+    embed_attachments:
+        Default: 1
 
 callbacks:
     MT::App::CMS::template_source.edit_entry: $postoffice::PostOffice::CMS::edit_entry_src
