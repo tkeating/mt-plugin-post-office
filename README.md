@@ -80,6 +80,12 @@ users send new entries to.
   as they are received ("Published") or if they must be manually published
   ("Draft").
 
+* Embed Attachments: By default, a photo attached to an email will become an
+  asset, an asset-entry relationship will be created, and the asset will be
+  embedded at the end of the entry. Uncheck this option to *not* embed the
+  asset (but still turn attachments into assets and create the asset-entry
+  relationship).
+
 * Allow all MT Authors from this Blog to Post: If you check this box, Movable
   Type will allow all of the authors of this weblog to post via email using
   the email address in their author profile.
