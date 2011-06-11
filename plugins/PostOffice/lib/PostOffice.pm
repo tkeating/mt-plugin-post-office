@@ -414,9 +414,10 @@ sub process_message {
     );
 
     if ($entry->status == 2) {    # publish
-        MT->rebuild_entry(
-            Entry             => $entry,
-            BuildDependencies => 1,
+        require MT::WeblogPublisher;
+        MT::WeblogPublisher->rebuild_entry(
+            Entry => $entry,
+            BuildDependecies => 1,
         );
     }
 
