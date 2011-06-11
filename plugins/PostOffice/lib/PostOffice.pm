@@ -495,6 +495,13 @@ sub process_messages {
             next;
         }
         my $from = lc $addr->address;
+        
+        # If any email address is allowed to post then just set the current
+        # $from to be a key in the $addresses hash.
+        if ($cfg->{allow_any_email}) {
+            $addresses->{$from} = 1;
+        }
+        
         unless ($addresses->{$from}) {
             print STDERR "[PostOffice] Unknown author address for message "
               . $msg->{'message-id'}

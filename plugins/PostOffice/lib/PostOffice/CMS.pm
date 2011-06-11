@@ -209,6 +209,14 @@ sub config_template {
 </mtapp:setting>
 
 <mtapp:setting
+    id="allow_any_email"
+    label="<__trans phrase="Allow Any Email Address to Post">"
+    show_hint="1"
+    hint="<__trans phrase="Checking this box will allow anybody to post to this blog. Note that this basically allows for unauthenticated, anonymous posting.">">
+    <input type="checkbox" name="allow_any_email" <mt:if name="allow_any_email">checked="checked"</mt:if> id="allow_any_email" class="cb" value="1" />
+</mtapp:setting>
+
+<mtapp:setting
     id="default_author"
     label="<__trans phrase="Default Author">"
     show_hint="1"
