@@ -1,7 +1,6 @@
 ## Post Office, a plugin for Movable Type
 
 * Author: Six Apart
-* Version: 1.1
 * Released under GPL2
 
 ## OVERVIEW ##
@@ -20,7 +19,7 @@ want to post to when sending an email.
 
 ### Prerequisites ###
 
-* Mail::IMAPClient (for IMAP) (included with Post Office)
+* Mail::IMAPClient (for IMAP)
 * Mail::POP3Client (for POP) (included with Post Office)
 * Email::Address (included with Post Office)
 * Email::MIME (included with Post Office)
