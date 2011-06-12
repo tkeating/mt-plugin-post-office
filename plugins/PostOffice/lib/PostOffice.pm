@@ -420,11 +420,16 @@ sub process_message {
     );
 
     if ($entry->status == 2) {    # publish
-        require MT::WeblogPublisher;
-        MT::WeblogPublisher->rebuild_entry(
+        MT->rebuild_entry(
             Entry => $entry,
             BuildDependecies => 1,
-        );
+        )
+            or MT->log({
+                blog_id => $blog_id,
+                level   => MT::Log::ERROR(),
+                message => 'Post Office encountered an error while trying to '
+                    . 'publish: ' . MT->errstr,
+            });
     }
 
     MT->run_callbacks('api_post_save.entry', MT->instance, $entry, undef);
