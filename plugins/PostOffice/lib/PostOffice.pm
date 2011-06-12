@@ -194,6 +194,7 @@ sub process_message_parts {
     # now process, and build document
     $text = '';
     my $file_num = 0;
+    
 
     foreach my $part (@parts) {
         my ($media_type, $part_charset) =
@@ -202,7 +203,12 @@ sub process_message_parts {
             $charset = $part_charset;
         }
         if ($media_type =~ m!^text/(html|plain)!) {
+
+            print STDERR '[PostOffice body text] From $part: ' . $part->body . "\n";
+
             my $body = MT::I18N::encode_text($part->body, $part_charset);
+            
+            print STDERR "[PostOffice body text] Processed through encode_text: $body\n";
 
             if (($media_type eq 'text/plain') && ($format eq 'richtext')) {
                 # we're embedding html, so format must be richtext.
@@ -242,6 +248,8 @@ sub process_message_parts {
         }
     }
 
+    print STDERR '[PostOffice body text] from $text: ' . $text . "\n";
+
     $msg->{subject} = $parsed->header('Subject');
 
     # Process for [Category] prefixes
@@ -270,6 +278,9 @@ sub process_message_parts {
     require MT::Sanitize;
     $text = MT::Sanitize->sanitize($text,
         "a href rel,b,i,strong,em,p,br/,ul,li,ol,blockquote,pre,div,span,table,tr,th rowspan colspan,td rowspan colspan,dd,dl,dt,img height width src alt");
+    
+    print STDERR "[PostOffice body text] Sanitized: $text\n";
+    
     $msg->{text}  = $text;
     $msg->{format} = $format;
     $msg->{files} = \@files;
@@ -329,6 +340,8 @@ sub process_message {
     my $blog = MT::Blog->load($blog_id);
 
     $pkg->process_message_parts($blog, $msg, $cfg, $au);
+
+    print STDERR '[PostOffice body text] final $msg ' . $msg->{text} . "\n";
 
     require MT::Entry;
     my $entry = MT::Entry->new();
