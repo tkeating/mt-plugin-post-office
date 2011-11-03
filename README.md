@@ -104,6 +104,15 @@ users send new entries to.
   completely anonymous. The Default Author is assigned entry ownership in this
   case.
 
+* Email Alias Matches MT Username: Checking this box will result in Post
+  Office looking for a matching MT user based on the alias portion of the
+  sender email address (the part before the @ sign). For example, if the email
+  was sent by `johnsmith@domain.com`, Post Office would check to see if there
+  is an MT Author with the username `johnsmith`. If a match is found, the
+  entry will be posted as that MT user (if the user has posting permissions in
+  the blog). If no match is found, Post Office will still try to look for a
+  user with a matching email address.
+
 * Default Author: This is the "default" author, the person to whom entries are
   assigned if no other valid author exists. Email addresses specified in the
   above field will be attributed to this author if they are not valid Authors.
