@@ -462,6 +462,10 @@ sub process_message {
         $entry->convert_breaks($msg->{format});
         $entry->message_id($msg->{'message-id'});
 
+        # Set the comment and trackback based on the blog default options.
+        $entry->allow_comments( $blog->allow_comments_default );
+        $entry->allow_pings( $blog->allow_pings_default );
+
         MT->run_callbacks(
             'postoffice_pre_save',
             blog_id     => $blog_id,
