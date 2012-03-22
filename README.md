@@ -70,7 +70,7 @@ page [Setting up run-periodic-tasks][].
 ## Future features ##
 
 * Support for spaces tags in Subject line, i.e.: #ip communications, #windows 8 [will likely require comma as tag separator]
-* Support for default category if unassigned
+* Support for default category if unassigned - OR can just use this plugin (tested & works): [Default Category](https://github.com/danwolfgang/mt-plugin-default-category)
 * If using IMAP I may specify a specific folder to monitor, i.e. BlogEmails. This way, you don't have to setup a separate 'dummy' email account to use. You can use your regular email account. Then you just setup an email (Outlook) rule that moves an inbound email with certain email-to-blog characteristics to this BlogEmails folder.
 ## CONFIGURATION ##
 
