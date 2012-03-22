@@ -55,8 +55,7 @@ page [Setting up run-periodic-tasks][].
 
 ## FEATURES ##
 
-
-Images are now imported into MT Asset Management database, so they can be used in a slideshow, search results, etc. {Note: PostOffice v1.1 added this feature too}
+* Images are now imported into MT Asset Management database, so they can be used in a slideshow, search results, etc. {Note: PostOffice v1.1 added this feature too}
 * Videos are also now imported into MT Asset Management database.
 * Both images and videos are now stored in /images/YYYY/MM dated folders instead of a single directory like PostOffice 1.0 & 1.1.
 * Ability for each blogger to set a maximum image width so they don't 'blow' out their blog layout with an image that is too wide.
