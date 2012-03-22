@@ -20,6 +20,14 @@ Subject format = [Category] Title Goes Here #tag1 #tag2 #tag2
 ### Forked Features in v2.0
 * iPhone video upload / auto-embed 
 * Max image setting per blog + auto-resize to fit max size
+* Auto-rotate email images based on EXIF tags. 
+* Disabled plus style email addressing used by PostOffice 1.0 and 1.1, which
+  expects email addresses using the format emailaddress+{blogid}@domain.com, 
+  i.e. tomkeating+5@tmcnet.com. However, since most email servers DO NOT 
+  support plus-style addressing, this was preventing me from getting this
+  plugin to work with Exchange Server 2010. I commented out the code, so you
+  can re-enable it if you wish, though I suspect most will prefer it disabled.
+
                              + 
 ## INSTALLATION ##
 
