@@ -28,7 +28,6 @@ Subject format = [Category] Title Goes Here #tag1 #tag2 #tag2
   plugin to work with Exchange Server 2010. I commented out the code, so you
   can re-enable it if you wish, though I suspect most will prefer it disabled.
 
-                             + 
 ## INSTALLATION ##
 
 ### Prerequisites ###
