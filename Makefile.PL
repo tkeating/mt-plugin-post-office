@@ -5,6 +5,6 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME            => 'Post Office',
-    VERSION         => '1.1',
+    VERSION         => '2.0',
     DISTNAME        => 'PostOffice',
 );
