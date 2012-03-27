@@ -30,7 +30,7 @@ sub deliver {
     my $pd_iter = MT::PluginData->load_iter( { plugin => $plugin->key } );
     return unless $pd_iter;
 
-# I think this loops through all blogs with PostOffice configured
+#  loops through all blogs with PostOffice configured
     my $count = 0;
     while ( my $pd = $pd_iter->() ) {
         next unless $pd->key =~ m/^configuration:blog:(\d+)/;
@@ -360,19 +360,15 @@ sub process_message_parts {
 #TK Added these lines here since line above is keeping the [Category name] and hash tags in there. Need to figure out HOW TO ADD CHARSET for proper encoding
 #TK Here is where I could set each blog to use a default category [FUTURE]
 $charset = "us-ascii"; #TK Hacked this as local var since couldn't figure out how to get to work by passing this variable.
+#Next line pulls out category ($1) and subject ($2), but $2 includes #hashtags, i.e. #tag2,#tag2. But I pull out hashtags from subject later on.
     if ($msg->{subject} =~ m/^[ ]*\[([^\]]+?)\][ ]*(.+)$/) {
         $msg->{category} = MT::I18N::encode_text($1, $charset);
-        $msg->{subject}  = MT::I18N::encode_text($2, $charset);
+        $msg->{subject} = MT::I18N::encode_text($2, $charset); #Removes [Category] from subject
     }
-    else {
-        $msg->{subject}  = MT::I18N::encode_text($msg->{subject}, $charset);
-    }
-# TK - If not using charset hack above uncomment next 2 lines
-#            $msg->{category} = $1;
-#            $msg->{subject}  = $2;
-# Process for #hashtags - remove from Subject
-        $msg->{subject} =~ s/#(\D[^ ]*)\s*//g;
-        $msg->{subject} =~ s/\s+$//;
+# Process for #hashtags - remove all #hashtags from Subject
+   $msg->{subject} =~ s/#(.[^,]*),*//g;
+   $msg->{subject} =~ s/\s+$//; #Remove trailing spaces
+   $msg->{subject} = MT::I18N::encode_text($msg->{subject}, $charset);
 }
 
 sub convert_part_to_posttext {
@@ -718,30 +714,26 @@ sub process_messages {
         $au->is_superuser || $perm->can_administer_blog || $perm->can_post
           or next;
 
-        # email subjects can indicate category by using the "[category] Subject" syntax
-    # Process for [Category] prefixes
-    if ($msg->{subject} =~ m/^[ ]*\[([^\]]+?)\][ ]*(.+)$/) {
-#        $msg->{category} = MT::I18N::encode_text($1, $charset);
-#        $msg->{subject}  = MT::I18N::encode_text($2, $charset);
-            $msg->{category} = $1;
-            $msg->{subject}  = $2;
-    }
-    else {
-#        $msg->{subject}  = MT::I18N::encode_text($msg->{subject}, $charset);
-        $msg->{subject}  = $msg->{subject};
-    }
+my $fullsubject;
 
-    # Process for #hashtags
-    if ($msg->{subject} =~ m/#/) {
-        my @tags = $msg->{subject} =~ m/#(\D[^ ]*)\s*/g;
+    # Save full $msg->{subject} since needed for #tag parsing
+    $fullsubject = $msg->{subject};
+
+    # Process for #hashtags.
+    #3/27/12 Added support for spaced tags using comma delimeter.
+    # Format: #ip communications,#the hunger games,#star wars
+    if ($fullsubject =~ m/#/) {
+        # OLD Space delimiter - my @tags = $msg->{subject} =~ m/#(\D[^ ]*)\s*/g;
+        my @tags = $fullsubject =~ m/#(\D[^,]*),*/g;
         if (@tags) {
             $msg->{tags} = [];
             foreach my $tag (@tags) {
 #                push @{$msg->{tags}}, MT::I18N::encode_text($tag, $charset);
                 push @{$msg->{tags}}, $tag;
             }
-            $msg->{subject} =~ s/#(\D[^ ]*)\s*//g;
-            $msg->{subject} =~ s/\s+$//;
+            #$msg->{subject} =~ s/#(\D[^ ]*)\s*//g;
+            #$msg->{subject} =~ s/#(\D[^,]*),*//g;
+            #$msg->{subject} =~ s/\s+$//;
         }
     }
 
