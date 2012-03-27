@@ -1,4 +1,4 @@
-## Post Office 2.0, a plugin for Movable Type
+## Post Office 2.1, a plugin for Movable Type
 
 * Author: Six Apart
 * Released under GPL2
@@ -17,7 +17,7 @@ want to post to when sending an email.
 You can specify the Category & multiple tags using email Subject line
 Subject format = [Category] Title Goes Here #tag1 #tag2 #tag2
 
-### Forked Features in v2.0
+### Forked Features in v2.1
 * iPhone video upload / auto-embed 
 * Max image setting per blog + auto-resize to fit max size
 * Auto-rotate email images based on EXIF tags. 
@@ -27,6 +27,7 @@ Subject format = [Category] Title Goes Here #tag1 #tag2 #tag2
   support plus-style addressing, this was preventing me from getting this
   plugin to work with Exchange Server 2010. I commented out the code, so you
   can re-enable it if you wish, though I suspect most will prefer it disabled.
+* Allowing spaced tags. e.g. #rocky balboa,#harrison ford,#xbox 360
 
 ## INSTALLATION ##
 
@@ -76,7 +77,6 @@ page [Setting up run-periodic-tasks][].
 
 ## Future features ##
 
-* Support for spaces tags in Subject line, i.e.: #ip communications, #windows 8 [will likely require comma as tag separator]
 * Support for default category if unassigned - OR can just use this plugin (tested & works): [Default Category](https://github.com/danwolfgang/mt-plugin-default-category)
 * If using IMAP I may specify a specific folder to monitor, i.e. BlogEmails. This way, you don't have to setup a separate 'dummy' email account to use. You can use your regular email account. Then you just setup an email (Outlook) rule that moves an inbound email with certain email-to-blog characteristics to this BlogEmails folder.
 ## CONFIGURATION ##
@@ -191,9 +191,9 @@ specified.
     [Movable Type Tests] My first emailed entry!
 
 Additionally, specifying a category, Entry Title, and tags is easy. Specify
-tags with a leading hashmark; many tags can be specified.
+tags with a leading hashmark; many tags can be specified separated by a comma (no space).
 
-    [Movable Type Tests] My first emailed entry! #PostOffice #Email
+    [Movable Type Tests] My first emailed entry! #PostOffice,#Email,#harrison ford,#microsoft xbox
 
 Lastly, send your email!
 
